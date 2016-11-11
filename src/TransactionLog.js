@@ -12,6 +12,9 @@ TransactionLog.prototype = {
     if(this._isIntegerOrFloat(amount) === false) {
       throw new Error("Transaction value must be a number")
     }
+    if(amount <= 0) {
+      throw new Error("Transaction value must be higher than zero")
+    }
   },
   deposit: function(amount, balance, transactionClass) {
     this._validateParams(amount, balance)

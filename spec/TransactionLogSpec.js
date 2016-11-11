@@ -21,6 +21,12 @@ describe("TransactionLog", function() {
         transactionLog.deposit("200", 700, transactionClass)
       }).toThrowError("Transaction value must be a number")
     })
+
+    it("raises error if amount is equal or less than zero", function() {
+      expect(function() {
+        transactionLog.deposit(0, 300, transactionClass)
+      }).toThrowError("Transaction value must be higher than zero")
+    })
   })
 
   describe("#withdraw", function() {
