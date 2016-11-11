@@ -1,6 +1,12 @@
 "use strict"
 
-function TransactionLog(transactionClass) {
-  this._transactionClass = transactionClass ? transactionClass : Transaction;
+function TransactionLog() {
   this._transactions = [];
+}
+
+TransactionLog.prototype = {
+  deposit: function(amount, balance, transactionClass) {
+    var transaction = transactionClass ? transactionClass : new Transaction(amount, balance, "credit")
+    this._transactions.push(transaction)
+  }
 }

@@ -6,12 +6,12 @@ describe("TransactionLog", function() {
   var transaction;
 
   beforeEach(function() {
-    transactionClass = jasmine.createSpyObj("transactionClass", ["new"])
-    transactionLog = new TransactionLog(transactionClass)
+    transactionClass = jasmine.createSpyObj("transactionClass", ["amount"])
+    transactionLog = new TransactionLog
   })
 
   it("create credit transaction and add it to transactions array", function() {
-    transactionLog.deposit(200, 700)
+    transactionLog.deposit(200, 700, transactionClass)
     expect(transactionLog._transactions.length).toEqual(1)
   })
 })
