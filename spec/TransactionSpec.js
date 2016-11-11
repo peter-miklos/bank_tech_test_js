@@ -18,4 +18,24 @@ describe("Transaction", function() {
       expect(debitTransaction.amount()).toEqual(50);
     })
   })
+
+  describe("#balance", function() {
+    it("returns the value of the credit transaction", function() {
+      expect(creditTransaction.balance()).toEqual(300);
+    })
+
+    it("returns the value of the debit transaction", function() {
+      expect(debitTransaction.balance()).toEqual(250);
+    })
+  })
+
+  describe("#type", function() {
+    it("returns the value of the credit transaction", function() {
+      expect(creditTransaction.type()).toEqual("credit");
+    })
+
+    it("returns the value of the debit transaction", function() {
+      expect(debitTransaction.type()).toEqual("debit");
+    })
+  })
 })
