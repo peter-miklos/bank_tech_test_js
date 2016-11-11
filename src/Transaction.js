@@ -9,5 +9,11 @@ function Transaction(amount, balance, type) {
 Transaction.prototype = {
   amount: function() {
     return this._amount;
+  },
+  balance: function() {
+    return this._balance;
+  },
+  type: function() {
+    return this._type;
   }
 }

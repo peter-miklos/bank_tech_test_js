@@ -20,21 +20,21 @@ describe("Transaction", function() {
   })
 
   describe("#balance", function() {
-    it("returns the value of the credit transaction", function() {
+    it("returns the new balance after credit transaction booked", function() {
       expect(creditTransaction.balance()).toEqual(300);
     })
 
-    it("returns the value of the debit transaction", function() {
+    it("returns the new balance after dbit transaction booked", function() {
       expect(debitTransaction.balance()).toEqual(250);
     })
   })
 
   describe("#type", function() {
-    it("returns the value of the credit transaction", function() {
+    it("returns the type of the credit transaction", function() {
       expect(creditTransaction.type()).toEqual("credit");
     })
 
-    it("returns the value of the debit transaction", function() {
+    it("returns the type of the debit transaction", function() {
       expect(debitTransaction.type()).toEqual("debit");
     })
   })
