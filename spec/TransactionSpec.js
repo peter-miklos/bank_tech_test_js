@@ -24,7 +24,7 @@ describe("Transaction", function() {
       expect(creditTransaction.balance()).toEqual(300);
     })
 
-    it("returns the new balance after dbit transaction booked", function() {
+    it("returns the new balance after debit transaction booked", function() {
       expect(debitTransaction.balance()).toEqual(250);
     })
   })
