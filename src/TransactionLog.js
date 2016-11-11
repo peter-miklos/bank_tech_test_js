@@ -15,6 +15,9 @@ TransactionLog.prototype = {
     if(amount <= 0) {
       throw new Error("Transaction value must be higher than zero")
     }
+    if(balance < 0) {
+      throw new Error("Balance cannot be negative")
+    }
   },
   deposit: function(amount, balance, transactionClass) {
     this._validateParams(amount, balance)
@@ -22,6 +25,7 @@ TransactionLog.prototype = {
     this._transactions.push(transaction);
   },
   withdraw: function(amount, balance, transactionClass) {
+    this._validateParams(amount, balance)
     var transaction = transactionClass ? transactionClass : new Transaction(amount, balance, "debit");
     this._transactions.push(transaction)
   }

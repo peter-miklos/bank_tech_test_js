@@ -34,5 +34,23 @@ describe("TransactionLog", function() {
       transactionLog.withdraw(100, 500, transactionClass)
       expect(transactionLog._transactions.length).toEqual(1)
     })
+
+    it("raises error if amount is not an integer", function() {
+      expect(function() {
+        transactionLog.withdraw("200", 500, transactionClass)
+      }).toThrowError("Transaction value must be a number")
+    })
+
+    it("raises error if amount is equal or less than zero", function() {
+      expect(function() {
+        transactionLog.withdraw(0, 300, transactionClass)
+      }).toThrowError("Transaction value must be higher than zero")
+    })
+
+    it("raises error if balance is less than zero", function() {
+      expect(function(){
+        transactionLog.withdraw(50.50, -20, transactionClass)
+      }).toThrowError("Balance cannot be negative")
+    })
   })
 })
