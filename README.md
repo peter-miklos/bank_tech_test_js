@@ -33,7 +33,23 @@ Tests
 ### Feature tests
 The program's main features are tested in Chrome Console:
 ```
-TBD
+account = new Account
+  Account {_OPENING_BALANCE: 0, _balance: 0, _transactionLog: TransactionLog, _statementEngine: StatementEngine}
+account.deposit(1000)
+  undefined
+account.deposit(200)
+  undefined
+account.printStatement()
+  "date || credit || debit || balance
+  12/10/2016 || 200.00 || || 1200.00
+  12/10/2016 || 1000.00 || || 1000.00"
+account.withdraw(333)
+  undefined
+account.printStatement()
+  "date || credit || debit || balance
+  12/10/2016 || || 333.00 || 867.00
+  12/10/2016 || 200.00 || || 1200.00
+  12/10/2016 || 1000.00 || || 1000.00"
 ```
 ### Unit tests
 The following unit tests are used:
