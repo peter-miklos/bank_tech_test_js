@@ -3,10 +3,12 @@
 describe("Transaction", function() {
   var creditTransaction;
   var debitTransaction;
+  var currentDate;
 
   beforeEach(function() {
     creditTransaction = new Transaction(100, 300, "credit")
     debitTransaction = new Transaction(50, 250, "debit")
+    currentDate = new Date()
   })
 
   describe("#amount", function() {
@@ -36,6 +38,16 @@ describe("Transaction", function() {
 
     it("returns the type of the debit transaction", function() {
       expect(debitTransaction.type()).toEqual("debit");
+    })
+  })
+
+  describe("#date", function() {
+    it("returns the date of the credit transaction", function() {
+      expect(creditTransaction.date()).toEqual(currentDate);
+    })
+
+    it("returns the date of the debit transaction", function() {
+      expect(debitTransaction.date()).toEqual(currentDate);
     })
   })
 })
