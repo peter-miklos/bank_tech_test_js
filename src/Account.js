@@ -11,6 +11,11 @@ Account.prototype = {
   deposit: function(amount) {
     var newBalance = this._balance + amount;
     this._transactionLog.deposit(amount, newBalance);
-    this._balance += newBalance;
+    this._balance = newBalance;
+  },
+  withdraw: function(amount) {
+    var newBalance = this._balance - amount;
+    this._transactionLog.withdraw(amount, newBalance);
+    this._balance = newBalance;
   }
 }
