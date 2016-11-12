@@ -1,7 +1,6 @@
 "use strict"
 
 function StatementEngine() {
-
 }
 
 StatementEngine.prototype = {
@@ -19,14 +18,19 @@ StatementEngine.prototype = {
     var day = date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate()
     return day + "/" + month + "/" + date.getFullYear()
   },
-  _addStatementContent: function(transactionLog) {
-    var transactions = transactionLog.getTransactions();
-    transactions = transactions.sort(function(a, b) { return b.date() - a.date()})
-    var self = this
-    transactions = transactions.map(function(tr) {
+  _getSortedTransactions: function(transactionLog) {
+    transactionLog = transactionLog.getTransactions();
+    return transactionLog.sort(function(a, b) { return b.date() - a.date()})
+  },
+  _getTransactionsInString: function(transactions, self) {
+    return transactions.map(function(tr) {
       return self._formatDate(tr.date()) + " || " + self._addCreditAmount(tr) + "|| " + self._addDebitAmount(tr) + "|| " + tr.balance().toFixed(2)
     }).join("\n")
-    return transactions
+  },
+  _addStatementContent: function(transactionLog) {
+    var self = this;
+    var transactions = self._getSortedTransactions(transactionLog)
+    return self._getTransactionsInString(transactions, self)
   },
   printStatement: function(transactionLog) {
     var statement = this._addHeader() + this._addStatementContent(transactionLog)
