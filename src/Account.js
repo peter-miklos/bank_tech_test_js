@@ -4,7 +4,7 @@ function Account(openingBalance, transactionLog, statementEngine) {
   this._OPENING_BALANCE = 0;
   this._balance = openingBalance ? openingBalance : this._OPENING_BALANCE;
   this._transactionLog = transactionLog ? transactionLog : new TransactionLog;
-  this._statementEngine;
+  this._statementEngine = statementEngine ? statementEngine : new StatementEngine;
 }
 
 Account.prototype = {
@@ -19,6 +19,6 @@ Account.prototype = {
     this._balance = newBalance;
   },
   printStatement: function() {
-    
+    return this._statementEngine.printStatement(this._transactionLog)
   }
 }

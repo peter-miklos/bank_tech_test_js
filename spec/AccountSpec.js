@@ -8,7 +8,7 @@ describe("Account", function() {
 
   beforeEach(function() {
     transactionLog = jasmine.createSpyObj("transactionLog", ['deposit', 'withdraw'])
-    statementEngine = jasmine.createSpy("statementEngine");
+    statementEngine = jasmine.createSpyObj("statementEngine", ['printStatement']);
     account1 = new Account(0, transactionLog, statementEngine);
     account2 = new Account(300, transactionLog, statementEngine);
   })
@@ -38,6 +38,14 @@ describe("Account", function() {
   })
 
   describe("#printStatement", function() {
-    // test cases to be added
+    it("calls the printStatement method on StatementEngine", function() {
+      account1.printStatement()
+      expect(statementEngine.printStatement).toHaveBeenCalled();
+    })
+
+    it("returns the value received from StatementEngine", function() {
+      statementEngine.printStatement.and.returnValue("Statement content");
+      expect(account1.printStatement()).toEqual("Statement content")
+    })
   })
 })
