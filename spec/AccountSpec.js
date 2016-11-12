@@ -42,7 +42,7 @@ describe("Account", function() {
     })
   })
 
-  describe("#print_statement", function() {
-
+  describe("#printStatement", function() {
+    // test cases to be added
   })
 })

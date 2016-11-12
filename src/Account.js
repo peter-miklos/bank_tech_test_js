@@ -17,5 +17,8 @@ Account.prototype = {
     var newBalance = this._balance - amount;
     this._transactionLog.withdraw(amount, newBalance);
     this._balance = newBalance;
+  },
+  printStatement: function() {
+    
   }
 }
