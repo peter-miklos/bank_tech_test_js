@@ -28,5 +28,8 @@ TransactionLog.prototype = {
     this._validateParams(amount, balance)
     var transaction = transactionClass ? transactionClass : new Transaction(amount, balance, "debit");
     this._transactions.push(transaction)
+  },
+  getTransactions: function() {
+    return this._transactions.copyWithin()
   }
 }

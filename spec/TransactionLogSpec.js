@@ -53,4 +53,13 @@ describe("TransactionLog", function() {
       }).toThrowError("Balance cannot be negative")
     })
   })
+
+  describe("#getTransactions", function() {
+    it("returns a copy of transactions", function() {
+      transactionClass.amount.and.returnValue(205)
+      transactionLog.deposit(205, 705, transactionClass)
+      var transactions = transactionLog.getTransactions()
+      expect(transactions[0].amount()).toEqual(205)
+    })
+  })
 })
