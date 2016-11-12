@@ -7,15 +7,10 @@ describe("Account", function() {
   var account2;
 
   beforeEach(function() {
-    transactionLog = {
-      deposit: function(amount) { return amount },
-      withdraw: function(amount) { return amount }
-    }
+    transactionLog = jasmine.createSpyObj("transactionLog", ['deposit', 'withdraw'])
     statementEngine = jasmine.createSpy("statementEngine");
     account1 = new Account(0, transactionLog, statementEngine);
     account2 = new Account(300, transactionLog, statementEngine);
-    spyOn(transactionLog, "deposit");
-    spyOn(transactionLog, "withdraw");
   })
 
   describe("#deposit", function() {
