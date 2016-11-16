@@ -1,11 +1,11 @@
 "use strict"
 
 class Transaction {
-  constructor(amount, balance, type) {
+  constructor(amount, balance, type, date = new Date()) {
     this._amount = amount;
     this._balance = balance;
     this._type = type;
-    this._date = new Date();
+    this._date = date;
   }
   amount() {
     return this._amount;
