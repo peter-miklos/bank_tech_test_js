@@ -1,24 +1,24 @@
 "use strict"
 
-function Account(openingBalance, transactionLog, statementEngine) {
-  this._OPENING_BALANCE = 0;
-  this._balance = openingBalance ? openingBalance : this._OPENING_BALANCE;
-  this._transactionLog = transactionLog ? transactionLog : new TransactionLog;
-  this._statementEngine = statementEngine ? statementEngine : new StatementEngine;
-}
+const _OPENING_BALANCE = 0;
 
-Account.prototype = {
-  deposit: function(amount) {
-    var newBalance = this._balance + amount;
+class Account {
+  constructor(openingBalance = _OPENING_BALANCE, transactionLog = new TransactionLog, statementEngine = new StatementEngine) {
+    this._balance = openingBalance;
+    this._transactionLog = transactionLog;
+    this._statementEngine = statementEngine;
+  }
+  deposit(amount) {
+    let newBalance = this._balance + amount;
     this._transactionLog.deposit(amount, newBalance);
     this._balance = newBalance;
-  },
-  withdraw: function(amount) {
-    var newBalance = this._balance - amount;
+  }
+  withdraw(amount) {
+    let newBalance = this._balance - amount;
     this._transactionLog.withdraw(amount, newBalance);
     this._balance = newBalance;
-  },
-  printStatement: function() {
+  }
+  printStatement() {
     return this._statementEngine.printStatement(this._transactionLog)
   }
 }

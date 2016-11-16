@@ -1,23 +1,22 @@
 "use strict"
 
-function Transaction(amount, balance, type) {
-  this._amount = amount;
-  this._balance = balance;
-  this._type = type;
-  this._date = new Date();
-}
-
-Transaction.prototype = {
-  amount: function() {
+class Transaction {
+  constructor(amount, balance, type, date = new Date()) {
+    this._amount = amount;
+    this._balance = balance;
+    this._type = type;
+    this._date = date;
+  }
+  amount() {
     return this._amount;
-  },
-  balance: function() {
+  }
+  balance() {
     return this._balance;
-  },
-  type: function() {
+  }
+  type() {
     return this._type;
-  },
-  date: function() {
+  }
+  date() {
     return this._date;
   }
 }
